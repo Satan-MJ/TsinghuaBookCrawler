@@ -17,12 +17,9 @@ def add_toc(input_pdf, output_pdf, chapter_data):
     for page in reader.pages:
         writer.add_page(page)
 
-    # Add table of contents
-    toc_page = writer.add_outline_item("Table of Contents", 0)
-
     # Add chapter entries
     for chapter_name, page_num in chapter_data:
-        writer.add_outline_item(chapter_name, page_num, parent=toc_page)
+        writer.add_outline_item(chapter_name, page_num)
 
     # Save the new PDF
     with open(output_pdf, "wb") as f:
